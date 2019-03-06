@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func TestRacer(t *testing.T)  {
+func TestRacer(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		slowServer := makeDelayedServer(20 * time.Millisecond)
 		fastServer := makeDelayedServer(0 * time.Millisecond)
@@ -20,7 +20,7 @@ func TestRacer(t *testing.T)  {
 
 		want := fastURL
 		got, _ := Racer(slowURL, fastURL)
-		if got != want  {
+		if got != want {
 			t.Errorf("got '%s' want '%s'", got, want)
 		}
 	})
@@ -30,7 +30,7 @@ func TestRacer(t *testing.T)  {
 
 		defer server.Close()
 
-		_, err := ConfigurableRacer(server.URL, server.URL, 20 * time.Millisecond)
+		_, err := ConfigurableRacer(server.URL, server.URL, 20*time.Millisecond)
 
 		if err == nil {
 			t.Error("expected an error but didn't get one")
